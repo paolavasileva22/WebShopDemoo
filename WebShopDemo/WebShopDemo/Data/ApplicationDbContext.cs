@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using WebShopDemo.Domain;
+using WebShopDemo.Models.Product;
 
 namespace WebShopDemo.Data
 {
@@ -18,5 +19,10 @@ namespace WebShopDemo.Data
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<WebShopDemo.Models.Product.ProductCreateVM> ProductCreateVM { get; set; }
+        public DbSet<WebShopDemo.Models.Product.ProductIndexVM> ProductIndexVM { get; set; }
+        public DbSet<WebShopDemo.Models.Product.ProductEditVM> ProductEditVM { get; set; }
+        public DbSet<WebShopDemo.Models.Product.ProductDetailsVM> ProductDetailsVM { get; set; }
+        public DbSet<WebShopDemo.Models.Product.ProductDeleteVM> ProductDeleteVM { get; set; }
     }
 }

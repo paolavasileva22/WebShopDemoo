@@ -25,48 +25,9 @@ namespace WebShopDemo.Infrastucture
             SeedCategories(dataCategory);
 
             var dataBrand = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-            SeedCategories(dataBrand);
+            SeedBrands(dataBrand);
 
             return app;
-        }
-
-        private static void SeedCategories(ApplicationDbContext data)
-        {
-            if (data.Categories.Any())
-            {
-                return;
-            }
-            data.Categories.AddRange(new[]
-            {
-                new Category {CategoryName="Laptop"},
-                new Category {CategoryName="Computer"},
-                new Category {CategoryName="Monitor"},
-                new Category {CategoryName="Accessory"},
-                new Category {CategoryName="TV"},
-                new Category {CategoryName="Mobile phone"},
-                new Category {CategoryName="Smart watch"}
-            });
-            data.SaveChanges();
-        }
-
-        private static void SeedBrands(ApplicationDbContext data)
-        {
-            if (data.Brands.Any())
-            {
-                return;
-            }
-            data.Brands.AddRange(new[]
-            {
-                new Brand {BrandName="Acer"},
-                new Brand {BrandName="Asus"},
-                new Brand {BrandName="Apple"},
-                new Brand {BrandName="Dell"},
-                new Brand {BrandName="HP"},
-                new Brand {BrandName="Huawei"},
-                new Brand {BrandName="Lenovo"},
-                new Brand {BrandName="Samsung"},
-            });
-            data.SaveChanges();
         }
 
         private static async Task RoleSeeder(IServiceProvider serviceProvider)
@@ -87,6 +48,7 @@ namespace WebShopDemo.Infrastucture
                 }
             }
         }
+
         private static async Task SeedAdministrator(IServiceProvider serviceProvider)
         {
             var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
@@ -94,8 +56,8 @@ namespace WebShopDemo.Infrastucture
             if (await userManager.FindByNameAsync("admin") == null)
             {
                 ApplicationUser user = new ApplicationUser();
-                user.FirstName = "Paola";
-                user.LastName = "Vasileva";
+                user.FirstName = "admin";
+                user.LastName = "admin";
                 user.PhoneNumber = "0885556549";
                 user.UserName = "admin";
                 user.Email = "admin@admin.com";
@@ -108,6 +70,43 @@ namespace WebShopDemo.Infrastucture
                     userManager.AddToRoleAsync(user, "Administrator").Wait();
                 }
             }
+        }
+        private static void SeedCategories(ApplicationDbContext dataCategory)
+        {
+            if (dataCategory.Categories.Any())
+            {
+                return;
+            }
+            dataCategory.Categories.AddRange(new[]
+            {
+                new Category {CategoryName="Laptop"},
+                new Category {CategoryName="Computer"},
+                new Category {CategoryName="Monitor"},
+                new Category {CategoryName="Accessory"},
+                new Category {CategoryName="TV"},
+                new Category {CategoryName="Mobile phone"},
+                new Category {CategoryName="Smart watch"}
+
+            });
+            dataCategory.SaveChanges();
+        }
+        private static void SeedBrands(ApplicationDbContext dataBrand)
+        {
+            if (dataBrand.Brands.Any())
+            {
+                return;
+            }
+            dataBrand.Brands.AddRange(new[]
+            {
+                new Brand {BrandName="Acer"},
+                new Brand {BrandName="Asus"},
+                new Brand {BrandName="Apple"},
+                new Brand {BrandName="Dell"},
+                new Brand {BrandName="HP"},
+                new Brand {BrandName="Lenovo"},
+                new Brand {BrandName="Samsung"}
+            });
+            dataBrand.SaveChanges();
         }
     }
 }
