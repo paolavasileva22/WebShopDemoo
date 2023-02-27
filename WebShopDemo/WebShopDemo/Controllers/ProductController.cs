@@ -64,9 +64,9 @@ namespace WebShopDemo.Controllers
         }
 
         [AllowAnonymous]
-        public IActionResult Index(string searchCategoryName, string searchStringBrandName)
+        public IActionResult Index(string searchStringCategoryName, string searchStringBrandName)
         {
-            List<ProductIndexVM> products = _productService.GetProducts(searchCategoryName, searchStringBrandName)
+            List<ProductIndexVM> products = _productService.GetProducts(searchStringCategoryName, searchStringBrandName)
                 .Select(product => new ProductIndexVM
                 {
                     Id = product.Id,
