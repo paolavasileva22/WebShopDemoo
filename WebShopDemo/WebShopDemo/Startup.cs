@@ -50,9 +50,11 @@ namespace WebShopDemo
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddTransient<IProductService, ProductService>();
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IBrandService, BrandService>();
-            services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IStatisticsService, StatisticsService>();
+
 
             services.AddControllersWithViews();
 
