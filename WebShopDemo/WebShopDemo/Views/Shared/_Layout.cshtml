@@ -24,6 +24,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+<<<<<<< HEAD
                         @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Client")))
                         {
                             <li class="nav-item">
@@ -32,6 +33,16 @@
                         }
                             @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
                             {
+=======
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="MyOrders">My Orders</a>
+                        </li>
+                        @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="Index">Orders</a>
+                            </li>
+>>>>>>> ae7627cbbfd20722d2bcef569ae59baf0c0820e5
                                 <li class="nav-item active">
                                     <div class="dropdown show">
                                         <a class="nav-link active dropdown-toggle" href="#"
@@ -39,12 +50,22 @@
                                            data-toggle="dropdown"
                                            aria-haspopup="true"
                                            aria-expanded="false">
+<<<<<<< HEAD
                                             Statistic Modul
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                             <a class="dropdown-item" asp-controller="Client" asp-action="Index">Clients</a>
                                             <a class="dropdown-item" asp-controller="Order" asp-action="Index">Orders</a>
                                             <a class="dropdown-item" asp-controller="Statistics" asp-action="Index">Statistics</a>
+=======
+                                            Statistics
+
+                                        </a>
+
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                            <a class="dropdown-item" href="/Statistics/Clients">Clients</a>
+                                            <a class="dropdown-item" href="/Statistics/Orders">Orders</a>
+>>>>>>> ae7627cbbfd20722d2bcef569ae59baf0c0820e5
                                         </div>
                                     </div>
                                 </li>
